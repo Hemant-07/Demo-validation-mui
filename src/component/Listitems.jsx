@@ -41,18 +41,25 @@ export const mainListItems = (
       <ListItemText primary="Dealer Management" />
     </ListItemButton>
     </Link>
+    
+    <Link to ="/Sub ">
     <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Sub Admin Management" />
     </ListItemButton>
+     </Link>
+
+   <Link to ="/Inventry">
     <ListItemButton>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Inventory Management" />
     </ListItemButton>
+      </Link>
+
     <ListItemButton>
       <ListItemIcon>
         <LayersIcon />
