@@ -16,7 +16,8 @@ const initialState = {
   };
   
   const inventoryReducer = (state = initialState, action) => {
-    console.log(action.payload)
+    console.log(action.payload,"hemant")
+   
     switch (action.type) {
       case 'ADD_ITEM':
      
@@ -33,6 +34,9 @@ const initialState = {
             item.id === action.payload.id ? action.payload : item
           ),
         };
+
+     
+
       case 'DELITEM':
         // Logic to delete item from the inventory
         // Use the item's ID to filter out the corresponding item
@@ -49,10 +53,30 @@ const initialState = {
         }
 
         case "ADD_NEW_ITEM": 
-        return{...state,row:[...state.row,action.payload]}
-
+        // return{row:[...state.row,action.payload]}
+        return {
+          ...state,
+          row: [...state.row, action.payload],
+        };
+        
         case "EDIT_ITEM":
-          return{...state,row:[...state.row,action.payload]}
+          // return{row:[...state.row,action.payload]}
+          const updatedRows = state.row.map((item) => {
+            if (item.id === action.payload.id) {
+              return {
+                ...item,
+                ...action.payload,
+              };
+            }
+            return item;
+          });
+          return {
+            ...state,
+            row: updatedRows,
+          };
+
+        // case "EDIT_ITEM":
+        //   return{...state,row:[...state.row,action.payload]}
         
         // case "DELETE_ELE": 
         // return{

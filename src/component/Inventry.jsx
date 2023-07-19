@@ -29,7 +29,7 @@ import img3 from "../asset/act4.svg"
 import img4 from "../asset/act5.png"
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import { connect } from 'react-redux';
-import { addItem, updateItem, deleteItem } from '../redux/actions/Action';
+import { addItem, editItem, deleteItem } from '../redux/actions/Action';
 import {useSelector, useDispatch} from 'react-redux'
 // import { useNavigate } from 'react-router-dom';
 // import { deleteItem } from '../redux/actions/Action';
@@ -75,6 +75,7 @@ const AppBar = styled(MuiAppBar, {
 
 
 const Inventry=({})=> {
+  // useSelector((state) => state.inventory.row);
   // const handleUpdateItem = (updatedItem) => {
   //   dispatch(updateItem(updatedItem));
   // };
@@ -135,7 +136,7 @@ const Inventry=({})=> {
           description: 'Updated Description',
           // other properties to be updated
         };
-        dispatch(updateItem(updatedItem));
+        dispatch(editItem(editItem));
       }} 
            />
           {params.value}
@@ -313,6 +314,8 @@ const [selectedItem, setSelectedItem] = useState(null);
       <div style={{ height: 450, width: '100%' }}>
       <DataGrid
         rows={row}
+       
+
         columns={mycol}
         
         initialState={{
@@ -320,7 +323,7 @@ const [selectedItem, setSelectedItem] = useState(null);
             paginationModel: { page: 0, pageSize: 10 },
           },
         }}
-        pageSizeOptions={[10, 10]}
+        pageSizeOptions={[0, 10]}
         checkboxSelection
         components={{
           

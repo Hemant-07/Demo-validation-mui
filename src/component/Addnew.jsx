@@ -22,6 +22,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 // import logo from "../asset/a4.png"
+import { ADD_NEW_ITEM, EDIT_ITEM } from "../redux/actions/ActionTypes"
 
 
 const userSchema = yup.object().shape({
@@ -184,6 +185,9 @@ function Addnew() {
   //   }
   // };
 
+ 
+
+
   const [data, setData] = useState({});
 
   const navigate = useNavigate();
@@ -211,6 +215,21 @@ console.log(location,
     }
   , [])
 
+   // ///////////////////////////
+  //   const [myArray,setMyArray] = useState(row)
+  //  console.log(myArray,"from reducer");
+  //   const onSubmit = handleSubmit((values) => {
+  //   if( location?.state?.route==="edit"){
+  //   }
+  //   else{
+  //     alert(2);
+  //     dispatch({type:"ADD_NEW_ITEM", })
+   
+  //   }
+
+  // });
+   // /////////////////////////
+
   useEffect(() => {
 
     setValue("description", data.description);
@@ -223,24 +242,34 @@ console.log(location,
 
     // Set other form field values here
   }, [data]);
+
+
+  
   
 console.log(data,"asfasfohadsflladslfjhsadjlfDATA")
   //  setValue('Name',editableData.name?editableData.name : "", )
 
 
   const onSubmit = handleSubmit((values) => {
-    if(location.state.route==="edit"){
+    if(location.state && location.state.route==="edit"){
+      const { id } = location.state.values; 
       dispatch({type:"EDIT_ITEM",payload:values});
+     
       navigate("/Inventry")
     }
     else{
+    
       console.log(values);
+      
       dispatch({type:"ADD_NEW_ITEM",payload:values})
+
+
+      
       navigate("/Inventry")
     }
 
   });
-  console.log("errors", errors);
+ console.log("errors",errors);
   return (
     <div className="d-flex">
       <AppBar position="absolute" open={open}>

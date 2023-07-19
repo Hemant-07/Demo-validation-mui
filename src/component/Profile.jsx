@@ -37,7 +37,6 @@ const AppBar = styled(MuiAppBar, {
       }),
     }),
   }));
-
 function Profile() {
     const navigate = useNavigate()
     const [open, setOpen] = React.useState(true);

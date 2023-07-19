@@ -1,14 +1,14 @@
 import { DELETE_ITEM } from '../actions/ActionTypes';
 export const addItem = item => {
     return {
-      type: 'ADD_ITEM',
+      type: 'ADD_NEW_ITEM',
       payload: item,
     };
   };
   
-  export const updateItem = item => {
+  export const editItem = item => {
     return {
-      type: 'UPDATEITEM',
+      type: 'EDIT_ITEM',
       payload: item,
     };
   };
